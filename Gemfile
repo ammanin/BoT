@@ -10,8 +10,8 @@ gem 'builder'
 gem 'activesupport'
 gem 'sinatra-contrib'
 gem 'twilio-ruby'
-#gem 'dotenv', :groups => [:development, :test]
-#gem 'dotenv-rails', 
+gem 'dotenv'
+gem 'dotenv-rails', :groups => [:development, :test]
 gem 'json'
 gem 'bundler'
 # to avoid installing postgres use 
