@@ -41,7 +41,9 @@ end
 @client = Twilio::REST::Client.new
 
 get "/" do
-  401
+  #401
+  "I guess it's step 2"
+  ENV['TWILIO_NUMBER']
 end
 
 # ----------------------------------------------------------------------
@@ -51,6 +53,7 @@ end
 
 error 401 do 
   "This worked!!!"
+  
 end
 
 
