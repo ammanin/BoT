@@ -3,11 +3,11 @@ require 'json'
 require 'sinatra/activerecord'
 require 'rake'
 require 'twilio-ruby'
-require 'dotenv'
+#require 'dotenv'
 
-Dotenv.load
+#Dotenv.load
 
-=begin
+
 # ----------------------------------------------------------------------
 # Load environment variables using Dotenv. If a .env file exists, it will
 # set environment variables from that file (useful for dev environments)
@@ -15,7 +15,7 @@ configure :development do
   require 'dotenv'
   Dotenv.load
 end
-
+=begin
 # require any models 
 # you add to the folder
 # using the following syntax:
@@ -40,8 +40,7 @@ auth_token = 'aa8a441c75c6da9fc67a92549448f007'
 
 # enable sessions for this project
 enable :sessions
-client = Twilio::REST::client.new
-ENV["TWILIO_ACCOUNT_SID"], ENV["TWILIO_AUTH_TOKEN"]
+client = Twilio::REST::Client.new ENV["TWILIO_ACCOUNT_SID"], ENV["TWILIO_AUTH_TOKEN"]
 
 get "/" do
 	#401
@@ -51,12 +50,20 @@ end
 
 get "/send_sms" do
 	client.account.messages.create(
-	:from => ENV["TWILIO_NUMBER"]
-	:to => "+14129548714"
+	:from => ENV["TWILIO_NUMBER"],
+	:to => "+14129548714",
 	:body => "Hi! oh my fucking god!"
 	)
 	"Send Message"
 end
+
+get '/incoming_sms' do
+	twilm = Twilio::TwiML::Response.new do |r|
+		r.Message = "BooooYaaaaa!"
+	end
+	twilm.text
+end
+
 # ----------------------------------------------------------------------
 #     ERRORS
 # ----------------------------------------------------------------------
