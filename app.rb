@@ -40,6 +40,8 @@ auth_token = 'aa8a441c75c6da9fc67a92549448f007'
 
 # enable sessions for this project
 enable :sessions
+client = Twilio::REST::client.new
+ENV["TWILIO_ACCOUNT_SID"], ENV["TWILIO_AUTH_TOKEN"]
 
 get "/" do
 	#401
@@ -47,6 +49,14 @@ get "/" do
   ENV['TWILIO_NUMBER']
 end
 
+get "/send_sms" do
+	client.account.messages.create(
+	:from => ENV["TWILIO_NUMBER"]
+	:to => "+14129548714"
+	:body => "Hi! oh my fucking god!"
+	)
+	"Send Message"
+end
 # ----------------------------------------------------------------------
 #     ERRORS
 # ----------------------------------------------------------------------
