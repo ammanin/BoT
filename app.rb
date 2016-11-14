@@ -6,7 +6,6 @@ require 'twilio-ruby'
 require 'dotenv'
 
 # ----------------------------------------------------------------------
-dotenv.load
 # Load environment variables using Dotenv. If a .env file exists, it will
 # set environment variables from that file (useful for dev environments)
 configure :development do
