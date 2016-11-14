@@ -9,6 +9,9 @@ gem 'sinatra-activerecord' # excellent gem that ports ActiveRecord for
 gem 'json'
 gem 'haml'
 gem 'builder'
+gem 'bundler'
+gem 'activesupport'
+gem 'sinatra-contrib'
 
 # to avoid installing postgres use 
 # bundle install --without production
@@ -21,3 +24,4 @@ end
 group :production do
   gem 'pg'
 end
+
