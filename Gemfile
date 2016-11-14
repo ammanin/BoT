@@ -1,18 +1,19 @@
 source 'https://rubygems.org'
 
 gem 'sinatra'
-gem 'json'
 gem 'shotgun'
 gem "rake"
 gem 'activerecord'
 gem 'sinatra-activerecord' # excellent gem that ports ActiveRecord for 
 gem 'haml'
 gem 'builder'
-gem 'bundler'
 gem 'activesupport'
 gem 'sinatra-contrib'
 gem 'twilio-ruby'
-
+gem 'dotenv', :groups => [:development, :test]
+#gem 'dotenv-rails', 
+gem 'json'
+gem 'bundler'
 # to avoid installing postgres use 
 # bundle install --without production
 
