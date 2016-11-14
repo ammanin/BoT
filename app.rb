@@ -59,7 +59,7 @@ end
 
 get '/incoming_sms' do
 	twilm = Twilio::TwiML::Response.new do |r|
-		r.Message = "BooooYaaaaa!"
+		r.Message "BooooYaaaaa!"
 	end
 	twilm.text
 end
