@@ -3,7 +3,7 @@ require 'json'
 require 'sinatra/activerecord'
 require 'rake'
 require 'twilio-ruby'
-require 'dotenv'
+#require 'dotenv'
 
 # ----------------------------------------------------------------------
 # Load environment variables using Dotenv. If a .env file exists, it will
