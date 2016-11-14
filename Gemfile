@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'sinatra'
-#gem 'json'
+gem 'json'
 gem 'shotgun'
 gem "rake"
 gem 'activerecord'
@@ -11,6 +11,7 @@ gem 'builder'
 gem 'bundler'
 gem 'activesupport'
 gem 'sinatra-contrib'
+gem 'twilio-ruby'
 
 # to avoid installing postgres use 
 # bundle install --without production
