@@ -5,8 +5,10 @@ gem 'json'
 gem 'shotgun'
 gem "rake"
 gem 'activerecord'
-gem 'sinatra-activerecord' # excellent gem that ports ActiveRecord for Sinatra
-
+gem 'sinatra-activerecord' # excellent gem that ports ActiveRecord for 
+gem 'json'
+gem 'haml'
+gem 'builder'
 
 # to avoid installing postgres use 
 # bundle install --without production
