@@ -36,7 +36,7 @@ end
 
 
 error 401 do 
-  "Not allowed!!!"
+  "Suck on this!!!"
 end
 
 
