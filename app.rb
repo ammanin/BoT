@@ -44,7 +44,7 @@ enable :sessions
 get "/" do
 	#401
   "I guess it's step 2"
-  #ENV['TWILIO_NUMBER']
+  ENV['TWILIO_NUMBER']
 end
 
 # ----------------------------------------------------------------------
