@@ -34,9 +34,6 @@ end
 @client = Twilio::REST::Client.new
 =end
 
-# put your own credentials here
-#account_sid = 'AC61d0dcd17dddb54bb7a57c5616e546b8'
-#auth_token = 'aa8a441c75c6da9fc67a92549448f007'
 
 # enable sessions for this project
 enable :sessions
@@ -51,8 +48,8 @@ end
 get "/send_sms" do
 	client.account.messages.create(
 	:from => ENV["TWILIO_NUMBER"],
-	:to => "+14128166195",
-	:body => "Knock Knock! Reply with <b>Who's there?</b> or <b>Go away</b>"
+	:to => "+14129548714",
+	:body => "Knock Knock! Reply with Who's there? or Go away"
 	)
 	"Send Message"
 end
@@ -72,17 +69,4 @@ end
 error 401 do 
   "This worked!!!"
   
-end
-
-
-# ----------------------------------------------------------------------
-#   METHODS
-#   Add any custom methods below
-# ----------------------------------------------------------------------
-
-private
-
-# for example 
-def square_of int
-  int * int
 end
