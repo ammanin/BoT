@@ -10,7 +10,7 @@ gem 'builder'
 gem 'activesupport'
 gem 'sinatra-contrib'
 gem 'twilio-ruby'
-gem 'dotenv'
+gem 'dotenv' 
 gem 'dotenv-rails', :groups => [:development, :test]
 gem 'json'
 gem 'bundler'

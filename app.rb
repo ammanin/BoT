@@ -44,7 +44,7 @@ client = Twilio::REST::Client.new ENV["TWILIO_ACCOUNT_SID"], ENV["TWILIO_AUTH_TO
 
 get "/" do
 	#401
-  "I guess it's step 2"
+  "I guess it's step 2" +
   ENV['TWILIO_NUMBER']
 end
 
