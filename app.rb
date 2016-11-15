@@ -35,8 +35,8 @@ end
 =end
 
 # put your own credentials here
-account_sid = 'AC61d0dcd17dddb54bb7a57c5616e546b8'
-auth_token = 'aa8a441c75c6da9fc67a92549448f007'
+#account_sid = 'AC61d0dcd17dddb54bb7a57c5616e546b8'
+#auth_token = 'aa8a441c75c6da9fc67a92549448f007'
 
 # enable sessions for this project
 enable :sessions
