@@ -51,7 +51,7 @@ end
 get "/send_sms" do
 	client.account.messages.create(
 	:from => ENV["TWILIO_NUMBER"],
-	:to => "+14123536508",
+	:to => "+14129548714",
 	:body => "Knock Knock! Reply with <b>Who's there?</b> or <b>Go away</b>"
 	)
 	"Send Message"
