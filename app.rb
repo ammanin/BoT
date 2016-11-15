@@ -3,14 +3,7 @@ require 'json'
 require 'sinatra/activerecord'
 require 'rake'
 require 'twilio-ruby'
-#require 'dotenv'
 
-#Dotenv.load
-
-
-# ----------------------------------------------------------------------
-# Load environment variables using Dotenv. If a .env file exists, it will
-# set environment variables from that file (useful for dev environments)
 configure :development do
   require 'dotenv'
   Dotenv.load
@@ -49,11 +42,12 @@ get "/send_sms" do
 	client.account.messages.create(
 	:from => ENV["TWILIO_NUMBER"],
 	:to => "+14129548714",
-	:body => "Knock Knock! Reply with Who's there? or Go away"
+	:body => "Knock Knock! Reply with <b>Who's there</b> or <b>Go away</b>"
 	)
 	"Send Message"
 end
-
+=begin
+=end
 get '/incoming_sms' do
 	twilm = Twilio::TwiML::Response.new do |r|
 		r.Message "BooooYaaaaa!"
