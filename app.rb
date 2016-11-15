@@ -44,7 +44,7 @@ client = Twilio::REST::Client.new ENV["TWILIO_ACCOUNT_SID"], ENV["TWILIO_AUTH_TO
 
 get "/" do
 	#401
-  "I guess it's step 2" +
+  "Is this you? " +
   ENV['TWILIO_NUMBER']
 end
 
@@ -52,7 +52,7 @@ get "/send_sms" do
 	client.account.messages.create(
 	:from => ENV["TWILIO_NUMBER"],
 	:to => "+14129548714",
-	:body => "Hi! oh my fucking god!"
+	:body => "Knock Knock! Reply with <b>Who's there?</b> or <b>Go away</b>"
 	)
 	"Send Message"
 end
