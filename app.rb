@@ -63,7 +63,7 @@ get '/incoming_sms' do
   
  if body == "hi" or body == "hello" or body == "hey" or session["last_context"] == "start"
     message = get_about_message
- elsif body == "play"
+ elsif body == "yes"
     session["last_context"] = "play"
     message = "Knock Knock! "
  elsif session["last_context"] == "play"
