@@ -72,8 +72,8 @@ get '/incoming_sms' do
 		session["x"] = RESPONSE.index(session["answer_1"])
 		session["answer_2"] = FINAL[session["x"]]
 		message = session["answer_1"]
-	elsif body == session["answer_1"]+" who?"
-		message = "#{session["answer_2"].upcase}! Play again?"
+	elsif body == session["answer_1"] #+" who?"
+		message = session["answer_2"]+"! Play again?"
 		session["answer_1"]=""
 		session["last_context"] = "start"
 	
