@@ -36,8 +36,12 @@ FINAL = ["Banana split so ice creamed.", "Tunis company, three’s a crowd.", "W
 
 get "/" do
 	#401
-  "Is this you? " +
-  ENV['TWILIO_NUMBER']
+		session["answer_1"] = RESPONSE.sample
+		session["x"] = RESPONSE.index(session["answer_1"])
+		session["answer_2"] = FINAL[session["x"]]
+		message = session["answer_1"]
+		"Knock knock!<br> Who's there? <br> #{session["answer_1"]} who? <br> #{session["answer_2"]} "
+  #ENV['TWILIO_NUMBER']
 end
 
 get "/send_sms" do
@@ -57,16 +61,16 @@ get '/incoming_sms' do
   body = params[:Body] || ""
   body = body.downcase.strip
   
-  if body == "hi" or body == "hello" or body == "hey"
+ if body == "hi" or body == "hello" or body == "hey"
     message = get_about_message
-  elsif body == "play"
+ elsif body == "play"
     session["last_context"] = "play"
     message = "Knock Knock! "
-  elsif session["last_context"] == "play"
+ elsif session["last_context"] == "play"
 	if body == "who's there?" || "whos there?" || "who is there?"
 		session["answer_1"] = RESPONSE.sample
-		session["x"] = RESPONSE.index(answer_1)
-		session["answer_2"] = FINAL[x]
+		session["x"] = RESPONSE.index(session["answer_1"])
+		session["answer_2"] = FINAL[session["x"]]
 		message = session["answer_1"]
 	elsif body == "#{session["answer_1"]} who?"
 		message = "#{session["answer_2"].upcase}! Play again?"
@@ -76,9 +80,9 @@ get '/incoming_sms' do
 	
 	end 
 else
+
 	 message = "Come on, you know the game And don't forget about punctuation "
-	 message = "Come on, you know the game And don't forget about punctuation "
- end
+end
  
  client.account.messages.create(
 	:from => ENV["TWILIO_NUMBER"],
@@ -176,9 +180,7 @@ end
 #     ERRORS
 # ----------------------------------------------------------------------
 get "/reset" do	
-	session["counter"] = 0
-end
-error 401 do 
-  "This worked!!!"
-  
+	session["answer_1"]=""
+	session["answer_2"]=""
+	session["last_context"] = "start"
 end
