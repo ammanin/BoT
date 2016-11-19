@@ -61,7 +61,7 @@ get '/incoming_sms' do
   body = params[:Body] || ""
   body = body.downcase.strip
   
- if body == "hi" or body == "hello" or body == "hey"
+ if body == "hi" or body == "hello" or body == "hey" or session["last_context"] == "start"
     message = get_about_message
  elsif body == "play"
     session["last_context"] = "play"
@@ -72,16 +72,15 @@ get '/incoming_sms' do
 		session["x"] = RESPONSE.index(session["answer_1"])
 		session["answer_2"] = FINAL[session["x"]]
 		message = session["answer_1"]
-	elsif body == "#{session["answer_1"]} who?"
+	elsif body == session["answer_1"]+" who?"
 		message = "#{session["answer_2"].upcase}! Play again?"
 		session["answer_1"]=""
-		session["answer_2"]=""
 		session["last_context"] = "start"
 	
 	end 
 else
 
-	 message = "Come on, you know the game And don't forget about punctuation "
+	 message = "Come on, you know the game and don't forget about punctuation "
 end
  
  client.account.messages.create(
@@ -145,6 +144,11 @@ get '/incoming_sms' do
   twiml.text
 end
 =end
+get "/reset" do	
+	session["answer_1"]=""
+	session["answer_2"]=""
+	session["last_context"] = "start"
+end
 
 
 private 
@@ -152,35 +156,14 @@ private
 
 GREETINGS = ["Hi","Yo", "Hey","Howdy", "Hello", "Ahoy", "â€˜Ello", "Aloha", "Hola", "Bonjour", "Hallo", "Ciao", "Konnichiwa"]
 
-COMMANDS = "hi, who, what, where, when, why and play."
 
-def get_commands
-  error_prompt = ["I know how to: ", "You can say: ", "Try asking: "].sample
-  
-  return error_prompt + COMMANDS
-end
+
 
 def get_greeting
   return GREETINGS.sample
 end
 
 def get_about_message
-  get_greeting + ", I\'m nok-nok bot. " + get_commands
-end
-
-def get_help_message
-  "You're stuck, eh? " + get_commands
-end
-
-def error_response
-  error_prompt = ["I didn't catch that.", "Hmmm I don't know that word.", "What did you say to me? "].sample
-  error_prompt + " " + get_commands
+  get_greeting + ", I\'m nok-nok bot. Would you like to read a knock knock joke? Type Yes to play"
 end
 # ----------------------------------------------------------------------
-#     ERRORS
-# ----------------------------------------------------------------------
-get "/reset" do	
-	session["answer_1"]=""
-	session["answer_2"]=""
-	session["last_context"] = "start"
-end
