@@ -72,7 +72,7 @@ get '/incoming_sms' do
 		session["x"] = RESPONSE.index(session["answer_1"])
 		session["answer_2"] = FINAL[session["x"]]
 		message = session["answer_1"]
-	elsif body == session["answer_1"] #+" who?"
+	elsif body == session["answer_1"].downcase #+" who?"
 		message = session["answer_2"]+"! Play again?"
 		session["answer_1"]=""
 		session["last_context"] = "start"
@@ -82,12 +82,13 @@ else
 
 	 message = "Come on, you know the game and don't forget about punctuation "
 end
- 
+=begin
  client.account.messages.create(
 	:from => ENV["TWILIO_NUMBER"],
 	:to => "+14129548714",
 	:body => message
 	)
+=end
  twiml = Twilio::TwiML::Response.new do |r|
    r.Message message
  end
