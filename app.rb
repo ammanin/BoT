@@ -73,7 +73,7 @@ get '/incoming_sms' do
 		session["answer_2"] = FINAL[session["x"]]
 		message = session["answer_1"] + session["answer_2"]
 		
-	elsif body == session["answer_1"].downcase #+" who?"
+	elsif body == "who?" #session["answer_1"].downcase #+
 		message = session["answer_2"]+"! Play again?"
 		session["answer_1"]=""
 		session["last_context"] = "start"
