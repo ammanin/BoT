@@ -63,24 +63,21 @@ get '/incoming_sms' do
   
  if body == "hi" or body == "hello" or body == "hey"
     message = get_about_message
-elsif body == "yes"
+ elsif body == "yes"
     session["last_context"] = "play"
     message = "Knock Knock!"
-	if session["last_context"] == "play"
-		if body == "who's there?"
+elsif body == "who's there?"
 		session["answer_1"] = RESPONSE.sample
 		session["x"] = RESPONSE.index(session["answer_1"])
 		session["answer_2"] = FINAL[session["x"]]
 		message = session["answer_1"]
-		elsif body == session["answer_1"].downcase + " who?"
+elsif body == session["answer_1"].downcase + " who?"
 		message = session["answer_2"] +" Would you like to play again?"
 		session["answer_1"] = ""
 		session["answer_2"] = ""
-		elsif body == "no"
-		message = "Bye bye!"
 		session["last_context"] = "start"
-		end
-	end
+elsif body == "no"
+		message = "Bye bye!"
 else
 	message = "Come on, you know the game and don't forget about punctuation "
 end
@@ -110,6 +107,9 @@ private
 
 
 GREETINGS = ["Hi","Yo", "Hey","Howdy", "Hello", "Ahoy", "â€˜Ello", "Aloha", "Hola", "Bonjour", "Hallo", "Ciao", "Konnichiwa"]
+
+
+
 
 def get_greeting
   return GREETINGS.sample
