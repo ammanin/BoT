@@ -66,17 +66,17 @@ get '/incoming_sms' do
  elsif body == "yes"
     session["last_context"] = "play"
     message = "Knock Knock! "
-		if body == "who's there?"
+elsif body == "who's there?"
 		session["answer_1"] = RESPONSE.sample
 		session["x"] = RESPONSE.index(session["answer_1"])
 		session["answer_2"] = FINAL[session["x"]]
 		message = session["answer_1"]
-		elsif body == session["answer_1"].downcase + " who?"
+elsif body == session["answer_1"].downcase + " who?"
 		message = session["answer_2"] +"<br> Would you like to play again?"
 		session["answer_1"] = ""
 		session["answer_2"] = ""
 		session["last_context"] = "start"
-		end
+
 else
 
 	message = "Come on, you know the game and don't forget about punctuation "
