@@ -71,7 +71,7 @@ get '/incoming_sms' do
 		session["x"] = RESPONSE.index(session["answer_1"])
 		session["answer_2"] = FINAL[session["x"]]
 		message = session["answer_1"]
-elsif body == "who?" #session["answer_1"].downcase #+
+elsif body == session["answer_1"].downcase + " who?"
 		message = session["answer_2"]
 
 else
