@@ -8,25 +8,6 @@ configure :development do
   require 'dotenv'
   Dotenv.load
 end
-=begin
-# require any models 
-# you add to the folder
-# using the following syntax:
-# require_relative './models/<model_name>'
-
-# set up a client to talk to the Twilio REST API
-@client = Twilio::REST::Client.new account_sid, auth_token
-
-# alternatively, you can preconfigure the client like so
-Twilio.configure do |config|
-  config.account_sid = account_sid
-  config.auth_token = auth_token
-end
-
-# and then you can create a new client without parameters
-@client = Twilio::REST::Client.new
-=end
-
 
 # enable sessions for this project
 enable :sessions
@@ -35,13 +16,11 @@ RESPONSE  = ["Banana","Tunis", "Waiter","To", "Daisy", "Cows go"]
 FINAL = ["Banana split so ice creamed.", "Tunis company, three’s a crowd.", "Waiter I get my hands on you.", "To whom. Learn English.", "Daisy me rolling, they hating.", "Cow’s go moo.", ]
 
 get "/" do
-	#401
 		session["answer_1"] = RESPONSE.sample
 		session["x"] = RESPONSE.index(session["answer_1"])
 		session["answer_2"] = FINAL[session["x"]]
 		message = session["answer_1"]
 		"Knock knock!<br> Who's there? <br> #{session["answer_1"]} who? <br> #{session["answer_2"]} "
-  #ENV['TWILIO_NUMBER']
 end
 
 get "/send_sms" do
@@ -64,8 +43,9 @@ get '/incoming_sms' do
  if body == "hi" or body == "hello" or body == "hey"
     message = get_about_message
  elsif body == "yes"
-    session["last_context"] = "play"
-    message = "Knock Knock!"
+        message = "Knock Knock!"
+#session["last_context"] = "play" 
+# The code would not work when i created a nested if statement in 'if body == session["last_context"] = "play" 
 elsif body == "who's there?"
 		session["answer_1"] = RESPONSE.sample
 		session["x"] = RESPONSE.index(session["answer_1"])
@@ -79,7 +59,7 @@ elsif body == session["answer_1"].downcase + " who?"
 elsif body == "no"
 		message = "Bye bye!"
 else
-	message = "Come on, you know the game and don't forget about punctuation "
+		message = "Come on, you know the game and don't forget about punctuation "
 end
 =begin
  client.account.messages.create(
