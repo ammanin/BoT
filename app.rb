@@ -71,12 +71,11 @@ get '/incoming_sms' do
 		session["answer_1"] = RESPONSE.sample
 		session["x"] = RESPONSE.index(session["answer_1"])
 		session["answer_2"] = FINAL[session["x"]]
-		message = session["answer_1"] + session["answer_2"]
+		message = session["answer_1"]
 		
 	elsif body == "who?" #session["answer_1"].downcase #+
-		message = session["answer_2"]+"! Play again?"
-		session["answer_1"]=""
-		session["last_context"] = "start"
+		message = session["answer_2"]
+
 	else
 	 message = "Come on, you know the game and don't forget about punctuation "
 	end 
